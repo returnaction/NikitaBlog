@@ -9,7 +9,7 @@ namespace NikitaBlog.Models
 
         [Required]
         [MaxLength(25)]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         public int DisplayOrder { get; set; }
 
