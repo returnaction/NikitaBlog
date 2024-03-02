@@ -10,7 +10,7 @@
             <h2 class="text-primary">Categories</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Category" action="Upsert" class="btn btn-primary">Create</a>
+            <a asp-controller="Category" asp-action="Upsert" class="btn btn-primary">Create</a>
         </div>
     </div>
 
@@ -32,8 +32,8 @@
                     <td>@category.Title</td>
                     <td>@category.DisplayOrder</td>
                     <td class="text-center">
-                        <a asp-controller="Category" asp-action="Upsert" class="btn btn-warning">Edit</a>
-                        <a asp-controller="Category" asp-action="Delete" class="btn btn-danger">Delete</a>
+                        <a asp-controller="Category" asp-action="Upsert" asp-route-id="@category.Id" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }

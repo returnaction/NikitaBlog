@@ -19,6 +19,40 @@ namespace NikitaBlog.Controllers
             return View(categories);
         }
 
-        
+        public IActionResult Upsert(int? id)
+        {
+            if(id is null || id == 0)
+            {
+                Category category = new();
+                return View(category);
+            }
+            else
+            {
+                Category? category = _unitOfWork.Category.Get(c => c.Id == id);
+                return View(category);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Upsert(Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(category);
+            }
+
+            if(category.Id == 0)
+            {
+                _unitOfWork.Category.Add(category);
+                _unitOfWork.Save();
+            }
+            else
+            {
+                _unitOfWork.Category.Update(category);
+                _unitOfWork.Save();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
