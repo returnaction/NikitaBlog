@@ -1,0 +1,43 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+   
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-primary">Categories</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" action="Upsert" class="btn btn-primary">Create</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <td>Title</td>
+                <td>Display</td>
+                <td></td>
+            </tr>
+        </thead>
+        
+        <tbody>
+            @foreach(Category category in Model.OrderBy(category => category.DisplayOrder))
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.Title</td>
+                    <td>@category.DisplayOrder</td>
+                    <td class="text-center">
+                        <a asp-controller="Category" asp-action="Upsert" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Category" asp-action="Delete" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
