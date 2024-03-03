@@ -95,5 +95,22 @@ namespace NikitaBlog.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Delete(int id)
+        {
+            Post? post = _unitOfWork.Post.Get(p => p.Id == id);
+            return View(post);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteAction(int id)
+        {
+            Post? post = _unitOfWork.Post.Get(p => p.Id == id);
+
+            _unitOfWork.Post.Remove(post);
+            _unitOfWork.Save();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

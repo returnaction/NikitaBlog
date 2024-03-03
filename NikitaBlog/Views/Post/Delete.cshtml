@@ -1,0 +1,50 @@
+﻿@model Post
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-primary">Are you sure you want to delete this post? </h2>
+    </div>
+    <hr />
+    <div class="row ">
+        <div class="col-8">
+            <form asp-action="Delete">
+                <input asp-for="Id" hidden />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" disabled class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Author" class="control-label"></label>
+                    <input asp-for="Author" disabled class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Text" class="control-label"></label>
+                    <textarea asp-for="Text" disabled class="form-control" rows="10"></textarea>
+                </div>
+          
+                <div class="row justify-content-evenly">
+                    <div class="col-md-auto">
+                        <button type="submit"  class="btn btn-primary">Delete</button>
+                    </div>
+                    <div class="col-md-auto">
+                        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-4">
+            <img src="@Model.ImageUrl" width="300" style="border-radius: 5px; border: 1px solid #bbb9b9" />
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
