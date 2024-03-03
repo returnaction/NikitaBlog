@@ -34,8 +34,8 @@
                     <td>@post.Author</td>
                     @* <td>@post.Category.Title</td> *@
                     <td class="text-center">
-                        <a asp-controller="Post" asp-action="Upsert" asp-route-id="Id" class="btn btn-warning">Edit</a>
-                        <a asp-controller="Post" asp-action="Delete" asp-route-id="Id" class="btn btn-danger">Delete</a>
+                        <a asp-controller="Post" asp-action="Upsert" asp-route-id="@post.Id" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }

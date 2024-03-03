@@ -1,0 +1,65 @@
+﻿@model PostVM
+
+@{
+    ViewData["Title"] = "Upsert";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="text-primary">@(Model.Post.Id != 0 ? "Update" : "Create") post</h2>
+    </div>
+    <hr />
+    <div class="row ">
+        <div class="col-8">
+            <form asp-action="Upsert" enctype="multipart/form-data">
+                <input asp-for="@Model.Post.Id" hidden />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Post.Title" class="control-label"></label>
+                    <input asp-for="@Model.Post.Title" class="form-control" />
+                    <span asp-validation-for="@Model.Post.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Post.Author" class="control-label"></label>
+                    <input asp-for="@Model.Post.Author" class="form-control" />
+                    <span asp-validation-for="@Model.Post.Author" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Post.Text" class="control-label"></label>
+                    <textarea asp-for="@Model.Post.Text" class="form-control" rows="10"></textarea>
+                    <span asp-validation-for="@Model.Post.Text" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Post.CategoryId" class="control-label"></label>
+                    <select asp-for="@Model.Post.CategoryId" class="form-control" asp-items="@Model.CategoryList">
+                        <option disabled selected>--Select Category</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Post.ImageUrl" class="control-label"></label>
+                    <input type="file" name="file" class="form-control" />
+
+                </div>
+                <div class="row justify-content-evenly">
+                    <div class="col-md-auto">
+                        <button type="submit" class="btn btn-primary">@(Model.Post.Id != 0 ? "Update" : "Create")</button>
+                    </div>
+                    <div class="col-md-auto">
+                        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                    </div>
+                </div>
+            </form>
+
+            
+        </div>
+
+        <div class="col-4">
+            <img src="@Model.Post.ImageUrl" width="300px" style="border-radius: 5px; border: 1px solid #bbb9b9" />
+        </div>
+    </div>
+
+
+
+</div>
+
+
