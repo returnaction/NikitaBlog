@@ -46,11 +46,13 @@ namespace NikitaBlog.Controllers
             {
                 _unitOfWork.Category.Add(category);
                 _unitOfWork.Save();
+                TempData["success"] = $"Catery {category.Title} added";
             }
             else
             {
                 _unitOfWork.Category.Update(category);
                 _unitOfWork.Save();
+                TempData["success"] = $"Catery {category.Title} updated";
             }
 
             return RedirectToAction(nameof(Index));
@@ -73,6 +75,7 @@ namespace NikitaBlog.Controllers
 
             _unitOfWork.Category.Remove(category);
             _unitOfWork.Save();
+            TempData["success"] = $"Catery {category.Title} deleted";
 
             return RedirectToAction(nameof(Index));
         }
