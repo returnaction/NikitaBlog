@@ -26,6 +26,12 @@ namespace NikitaBlog.Controllers
             return View(posts);
         }
 
+        public IActionResult Details(int id)
+        {
+            Post? post = _unitOfWork.Post.Get(p => p.Id == id);
+            return View(post);
+        }
+
         public IActionResult Upsert(int? id)
         {
             IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll().Select(c => new SelectListItem
@@ -112,5 +118,7 @@ namespace NikitaBlog.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+    
     }
 }

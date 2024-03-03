@@ -30,7 +30,7 @@
             {
                 <tr>
                     <td>@post.Id</td>
-                    <td>@post.Title</td>
+                    <td><a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id" class="btn btn-outline-primary">@post.Title</a></td>
                     <td>@post.Author</td>
                     @* <td>@post.Category.Title</td> *@
                     <td class="text-center">

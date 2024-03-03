@@ -1,8 +1,16 @@
-﻿@{
+﻿@model List<Category>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row text-center">
+        <h2 class="text-primary">Welcome to the Nikita Blog Post App!</h2>
+    </div>
+
+    <div class="text-center">
+        <a asp-controller="Post" asp-action="Upsert" class=" btn btn-primary">New Post</a>
+    </div>
+
+    
 </div>
