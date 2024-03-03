@@ -1,0 +1,45 @@
+﻿@model List<Post>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <partial name="_Notification" />
+
+    <div class="row">
+        <div class="col-10 text-center">
+            <h2 class="text-primary">Posts</h2>
+        </div>
+        <div class="col-2 text-end">
+            <a asp-controller="Post" asp-action="Upsert" class="btn btn-primary">Create</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                @* <th>Category</th> *@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Post post in Model)
+            {
+                <tr>
+                    <td>@post.Id</td>
+                    <td>@post.Title</td>
+                    <td>@post.Author</td>
+                    @* <td>@post.Category.Title</td> *@
+                    <td class="text-center">
+                        <a asp-controller="Post" asp-action="Upsert" asp-route-id="Id" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Post" asp-action="Delete" asp-route-id="Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
