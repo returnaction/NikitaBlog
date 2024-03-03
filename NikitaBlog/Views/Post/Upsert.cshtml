@@ -13,6 +13,7 @@
         <div class="col-8">
             <form asp-action="Upsert" enctype="multipart/form-data">
                 <input asp-for="@Model.Post.Id" hidden />
+                <input asp-for="@Model.Post.ImageUrl" hidden />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="@Model.Post.Title" class="control-label"></label>
@@ -49,8 +50,6 @@
                     </div>
                 </div>
             </form>
-
-            
         </div>
 
         <div class="col-4">
